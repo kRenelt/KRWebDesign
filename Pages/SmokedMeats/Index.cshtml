@@ -1,0 +1,177 @@
+﻿@page
+@model KRWebDesign.Pages.SmokedMeats.IndexModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+
+    <meta name="viewport" content="width=device-width" />
+    <title>Welcome to Reno's Smoked Meats</title>
+    <environment include="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" type="text/css" href="~/css/SimpleSite.css?t=<%= DateTime.Now.Ticks %>" media="screen" />
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        <link type="text/css" href="~/css/SimpleSite.css" rel="stylesheet">
+    </environment>
+
+</head>
+<body>
+    <header>
+        <nav id="myNav">
+            <ul>
+                <li><a href="/Index">Back to KRWebDesign.com</a></li>
+                <li><a asp-page="/About">About</a></li>
+                <li><a asp-page="/Contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <nav>
+        <div class="clearfix">
+            <div id="demo" class="shoppingCart">
+                @await Component.InvokeAsync("ShoppingCart")
+            </div>
+        </div>
+    </nav>
+
+    <div id="simpleSite">
+        <div id="container">
+            <h1 class="text-center">Best Smoked <em>Meats.</em></h1>
+            <div class="searchFields">
+                <div class="col-sm-3">
+                    <form asp-page="./Index" method="get">
+                        <div class="form-actions">
+                            <p> Find by name: </p>
+
+                            <input class="searchString form-control" type="text" name="SearchString" value="@Model.SearchFilter" />
+
+                            <input type="submit" value="Search" class="btn btn-default" /> |
+
+                            <a asp-page="./Index">Back to full List</a>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-sm-3">
+                    <form>
+                        <p>
+                            Find by Product:
+                        </p>
+                        <p>
+                            <select class="form-control" asp-for="MeatFlavor" asp-items="Model.FlavorList">
+                                <option value="">All</option>
+                            </select>
+                            <input type="submit" value="Filter" class="btn btn-default" />
+                        </p>
+                    </form>
+                </div>
+            </div>
+
+            @{
+                if (Model.IsAdminUser)
+                {
+                    <p>
+                        <a class="adminButton" asp-page="Create">Create New</a>
+                    </p>
+                }
+            }
+            <!--
+         <div>
+             <p id="test">Text I need to change</p>
+         </div>
+
+         <div id="demo">
+             <h1>The XMLHttpRequest Object</h1>
+             <button id="button" type="button">Change Content</button>
+         </div>
+    -->
+            <section id="tagline">
+                <div class="pull-left row col-sm-6">
+                    <div class="col-3">
+                        <p>Order by:</p>
+                        <a asp-page="./Index" asp-route-sortOrder="@Model.PriceSort">
+                            @Html.DisplayNameFor(model => model.Beef[0].Price)
+                        </a>
+                        <br />
+                        <a asp-page="./Index" asp-route-sortOrder="@Model.QuantitiySort">
+                            @Html.DisplayNameFor(model => model.Beef[0].Quantity)
+                        </a>
+                        <br />
+                        <a asp-page="./Index" asp-route-sortOrder="@Model.FlavorSort">
+                            @Html.DisplayNameFor(model => model.Beef[0].Flavor)
+                        </a>
+                    </div>
+                </div>
+                <div class="kensBody">
+                    @foreach (var item in Model.Beef)
+                    {
+                        var typeOfMeat = "productObject" + item.TypeOfMeat;
+
+                        <div class="col-3 @typeOfMeat">
+                            <a asp-page="./Details" asp-route-id="@item.ID">
+                                <div class="row">
+                                    <p>
+                                        @Html.DisplayFor(modelItem => item.Flavor)
+                                    </p>
+
+                                    <p>
+                                        @Html.DisplayFor(modelItem => item.Price)
+                                    </p>
+                                    <p>
+                                        Quantity left:
+                                        @Html.DisplayFor(modelItem => item.Quantity)
+                                    </p>
+                                </div>
+                            </a>
+                            <div class="row">
+                                @{
+                                    if (Model.IsAdminUser)
+                                    {
+                                        <p>
+                                            <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                                            <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a> |
+                                        </p>
+                                    }
+
+                                }
+                            </div>
+                        </div>
+                    }
+                </div>
+            </section>
+
+        </div>
+    </div>
+    <footer>
+        <p> copyright &copy; 2018 Ken Renelt</p>
+    </footer>
+
+    <environment include="Development">
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"
+                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                asp-fallback-test="window.jQuery"
+                crossorigin="anonymous"
+                integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT">
+        </script>
+        <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js"
+                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+                crossorigin="anonymous"
+                integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
+        </script>
+        <script src="~/js/site.min.js" asp-append-version="true"></script>
+    </environment>
+</body>
+</html>

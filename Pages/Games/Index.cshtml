@@ -1,0 +1,108 @@
+﻿@page
+@model KRWebDesign.Pages.Games.IndexModel
+
+@{
+    ViewData["Title"] = "Games";
+    Layout = "~/Pages/Shared/_RenosStyle.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <br />
+    <div class="pull-left col-sm-3">
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        High Score List:
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.HighScoreList)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.HighScore)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.HighScoreNames)
+                        </td>
+
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+        <h1> @Model.KensString</h1>
+    </div>
+
+    <div class="gameBoard">
+        <canvas id="myCanvas" width="480" height="320"></canvas>
+    </div>
+    <div class="play-button">
+        <div class="row">
+            <p id="score"> Score: 0</p>
+            <p id="lifeCounter">3</p>
+        </div>
+        <p class=""> Games Played = @Model.GamesPlayed</p>
+
+        <button id="playButton">Click to play Pong</button>
+
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.PlayerData[0].GamerName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PlayerData[0].TriesPerDay)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PlayerData[0].LastAttemptedPlay)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.PlayerData[0].GamerLevel)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PlayerData[0].GamePlaysToDate)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.PlayerData)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.GamerName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TriesPerDay)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LastAttemptedPlay)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.GamerLevel)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.GamePlaysToDate)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <a asp-page="./Details">Details</a>
+</body>
+</html>

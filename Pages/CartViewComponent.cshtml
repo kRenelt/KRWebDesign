@@ -1,0 +1,15 @@
+﻿@page
+@model string
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+
+<div class="pull-right">
+    <ul class="row">
+        <li>Cart</li>
+        <li>Total Items:  </li>
+        <li>Total Price: @Model </li>
+        <li><a asp-page="/ShoppingCart/Index">GoToCart</a></li>
+    </ul>
+</div>

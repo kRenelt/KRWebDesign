@@ -1,0 +1,51 @@
+﻿@page
+@model KRWebDesign.Pages.FavoriteWebsites.IndexModel
+
+@{
+    ViewData["Title"] = "Favorites";
+    Layout = "~/Pages/Shared/_layout.cshtml";
+}
+
+<h2 class="text-center bg-success">A place to keep all your favorite websites.</h2>
+<p>This page shows only your stored pages. Lets you sort them by your personal ranking</p>
+<p>
+    <a class="btn favButton" asp-page="Create">Add a new favorite</a>
+</p>
+<br />
+<table class="table">
+    <thead class="bg-info">
+        <tr>
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.SortAscend">
+                    @Html.DisplayNameFor(model => model.FavoriteWebSites[0].Rating)
+                </a>
+                
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FavoriteWebSites[0].Category)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.FavoriteWebSites)
+        {
+            <ul class="favoriteBar">
+                <li>
+                    <a asp-href="@Html.DisplayFor(modelItem => item.Rating)">
+                        @Html.DisplayFor(modelItem => item.Rating)
+                    </a>
+                </li>
+                <li>
+                    <a href="@Html.DisplayFor(modelItem => item.Category)">
+                        @Html.DisplayFor(modelItem => item.Category)
+                    </a>
+                </li>
+                <li>
+                    <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+                </li>
+            </ul>
+        }
+    </tbody>
+</table>

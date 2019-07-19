@@ -1,0 +1,42 @@
+﻿@page
+@model KRWebDesign.Pages.FavoriteWebsites.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h2>Create your shortcut here</h2>
+
+<h4>FavoriteWebSites</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="FavoriteWebSites.Category" class="control-label">Add a website to be saved to your page</label>
+                <input asp-for="FavoriteWebSites.Category" class="form-control" />
+                <span asp-validation-for="FavoriteWebSites.Category" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="FavoriteWebSites.Rating" class="control-label">Rate your website for easy searching</label>
+                <input asp-for="FavoriteWebSites.Rating" class="form-control" />
+                <span asp-validation-for="FavoriteWebSites.Rating" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,27 @@
+﻿
+@model KRWebDesign.Models.ShoppingCartModel
+@{
+    Layout = null;
+}
+
+<div class="row">
+    @{
+        decimal totalPrice = 0;
+        var itemsInCart = 0;
+    }
+
+    @foreach (var cartItem in Model.UserCart)
+    {
+        totalPrice += cartItem.Price;
+        itemsInCart += cartItem.ItemsInToCart;
+    }
+
+    <ul>
+        <li><h3>Welcome Back: </h3></li>
+        <li>@Model.UserPlayerData.GamerName</li>
+        <li>Total Price: $@totalPrice</li>
+        <li>Items in Cart: @itemsInCart</li>
+        <li><a class="glyphicon-shopping-cart" asp-page="/ShoppingCart/Index">Cart</a></li>
+    </ul>
+</div>
+

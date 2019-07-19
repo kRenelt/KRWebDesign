@@ -1,0 +1,66 @@
+﻿@page
+@model KRWebDesign.Pages.SmokedMeats.DetailsModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+
+    <div>
+        @{
+            if (Model.IsAdminUser)
+            {
+                <p>
+                    <a asp-page="./Edit" asp-route-id="@Model.UserBeef.ID">Edit</a> |
+                </p>
+            }
+        }
+        <p>
+            <a asp-page="./Index">Back to List</a>
+        </p>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <form method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="UserBeef.Flavor" class="control-label">@Model.UserBeef.Flavor</label>
+                    <span asp-validation-for="UserBeef.Flavor" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="UserBeef.Price" class="control-label">@Model.UserBeef.Price</label>
+                    <input asp-for="UserBeef.Price" class="form-control" readonly />
+                    <span asp-validation-for="UserBeef.Price" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="UserBeef.Quantity" class="control-label">@Model.UserBeef.Quantity</label>
+                    <input asp-for="UserBeef.Quantity" class="form-control" />
+                    <span asp-validation-for="UserBeef.Quantity" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="UserBeef.ProductID" class="control-label">@Model.UserBeef.Quantity</label>
+                    <input asp-for="UserBeef.ProductID" class="form-control" readonly/>
+                    <span asp-validation-for="UserBeef.ProductID" class="text-danger"></span>
+                </div>
+
+
+                <div class="form-group">
+                    <input type="submit" value="Add To Cart" class="btn btn-default" />
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

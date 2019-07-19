@@ -1,0 +1,28 @@
+﻿
+@model IEnumerable<KRWebDesign.Models.Cart>
+@{
+    Layout = null;
+}
+
+<h3>Shopping List</h3>
+<ul>
+    @{ 
+        var ownerId = "Guest";
+        decimal totalPrice = 0;
+        var itemsInCart = 0;
+    }
+
+    @foreach (var todo in Model)
+    {
+        ownerId = todo.OwnerID;
+        totalPrice += todo.Price;
+        itemsInCart += todo.ItemsInToCart;
+    }
+    <li>@ownerId</li>
+    <li>Total Price: $@totalPrice</li>
+    <li>Items in Cart: @itemsInCart</li>
+    <li><a asp-page="/ShoppingCart/Index">Cart</a></li>
+
+</ul>
+ 
+
