@@ -1,0 +1,75 @@
+﻿
+body {
+    padding-top: 40px;
+    background-size:cover;
+    padding-bottom: 40px;
+    width: 1000px;
+    margin: 10px auto 10px;
+    background-color: white;
+}
+
+.kensBody {
+    width: 1000px;
+    height: 420px;
+    background: url('../images/Building.png') center center no-repeat;
+}
+
+.rightSideBar {
+    float: right;
+    height: 420px;
+    box-shadow: rgba(0,0,0,1.0) 6px -6px inset;
+    background-color:cornsilk;
+}
+
+.LeftSideBar {
+    float: left;
+    background-color: bisque;
+    height: 420px;
+    box-shadow: rgba(0,0,0,1.0) -6px -6px inset;
+}
+
+.learnaboutken {
+    color: blue;
+    text-shadow: 2px 4px 2px rgba(0,0,0,1.0);
+    margin-top: 10px;
+}
+
+.kensCenter {
+    width: 1000px;
+}
+
+footer {
+    width: 1000px;
+}
+
+.bottomDiv {
+    background-color: blanchedalmond;
+}
+
+.favoriteBar {
+    border: solid 2px black;
+    padding: 10px;
+    margin: 10px auto 10px;
+}
+
+.favoriteBar:hover {
+    background-color:paleturquoise;
+}
+
+.favButton {
+    border-radius: 20%;
+    padding: 10px;
+    border-color: #333;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.9);
+    background: #3fc368;
+    background: linear-gradient(to top, #629c71, #00ff42);
+}
+
+.favButton:hover {
+    border-color: #333;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.9);
+    background: #3fc368;
+    background: linear-gradient(to top, #00ff42, #629c71);
+}
+
+

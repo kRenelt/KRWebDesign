@@ -1,0 +1,176 @@
+﻿html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    background-color: #33cccc;
+    min-width: 100%;
+    min-height: 200px;
+}
+
+[class*="col-"] {
+    float: left;
+    padding: 15px;
+    margin: 4px auto 4px;
+    background-size: cover;
+}
+
+.icon-bar {
+    background-color:brown;
+}
+
+.kensDropDown {
+    background-color: bisque;
+}
+
+#myNav {
+    padding: 5px;
+    height: 20px;
+}
+
+.dropdown-menu {
+    background-color: beige;
+    color:white;
+    padding: 10px;
+}
+
+
+.pull-left {
+    padding: 40px;
+}
+
+.adminButton {
+    border: solid 1px black;
+}
+
+.pull-right {
+    border: dashed 2px black;
+    margin: 10px 6px 10px 10px;
+    padding: 4px;
+}
+
+.gameBoard {
+    background-color: beige;
+    background-size:cover;
+    background-position-x: center;
+}
+
+canvas {
+    background-color: aliceblue;
+}
+
+.playButton {
+    margin: 10px auto 10px;
+}
+
+#myCanvas {
+    border: solid 2px black;
+    margin: 0px auto 0px;
+    display: block;
+    position:relative;
+}
+
+.navbar {
+    background-color: cadetblue;
+    margin: 0px 0px 20px 0px;
+    height: 50px;
+    text-align: center;
+    line-height: 15px;
+}
+
+header {
+    text-align: center;
+    padding: 20px 0;
+    border-bottom: solid 1px white;
+}
+
+nav ul li {
+    display: inline-block;
+    padding: 10px;
+}
+
+nav ul li:hover {
+    display: inline-block;
+    padding: 10px;
+    background-color: black;
+}
+
+a:link {
+    color: blue;
+    text-decoration: none;
+    text-transform: lowercase;
+}
+
+a:visited {
+    color: blue;
+}
+
+a:hover {
+    color: black;
+}
+
+#tagline {
+    text-align: center;
+    margin: 50px 0 0;
+    height: 400px;
+    width: 800px;
+}
+
+#tagline h1 {
+    margin-bottom: 160px;
+}
+
+#tagline h1 em {
+    font-weight: normal;
+    font-style: normal;
+    display: block;
+}
+
+footer {
+    color: white;
+    text-align: center;
+    font-size: 14px;
+    border-top: solid 2px white;
+    position: relative;
+    padding: 4px 10px 4px 0px;
+    margin: 10px auto 10px;
+    bottom: 5px;
+}
+
+.searchString {
+    clear: both;
+    color: black;
+    width: 100%;
+    margin: auto;
+    text-align: center;
+}
+
+#three-columns {
+    -webkit-column-count: 3;
+    -moz-column-count: 3;
+    column-count: 3;
+    column-gap: 10px;
+    -webkit-column-gap: 10px;
+    -moz-column-gap: 10px;
+    -webkit-column-rule-style: dashed;
+    -moz-column-rule-style: dashed;
+    column-rule-style: dashed;
+    column-rule-width: 1px;
+    -webkit-column-rule-width: 1px;
+    -moz-column-rule-width: 1px;
+}
+
+@media screen and (max-width: 600px) {
+    .column {
+        width: 100%;
+    }
+}
